@@ -36,9 +36,7 @@ Tid för handledning på torsdagens lektion via discord
 
 ## Inlämning
 
-##Länk till ER-modul
-[
-](https://drive.google.com/file/d/1S8knsKhz8_1tJu8t8I85uxx82wbZxrWg/view?usp=sharing)
+[Länk till ER-modul](https://drive.google.com/file/d/1S8knsKhz8_1tJu8t8I85uxx82wbZxrWg/view?usp=sharing)
 
 Inlämning sker på Awesomo med en länk till ert Github repo med er kod senast måndag 20/5 23:59.
 [dokumentation för att importera/exportera data till postman](https://learning.postman.com/docs/getting-started/importing-and-exporting/importing-and-exporting-overview/#importing-data-into-postman)
