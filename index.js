@@ -6,7 +6,7 @@ const app = express()
 const PORT = 5000;
 const URL = '127.0.0.1'
 
-app.use(bodyParser.json())
+app.use(bodyParser.json()) // ser till att omvandla JSON-format så att vi kan utläsa det 
 
 // const db = database.initDatabase() // denna fixar vi på database.js sen 
 
