@@ -1,0 +1,17 @@
+{
+  "name": "sqlbulletingrupp1",
+  "version": "1.0.0",
+  "description": "Ni ska i denna gruppexamination bygga ett API för en tjänst som fungerar som en anslagstavla. En användare kan posta ett meddelande till en kanal som denna \"prenumererar\" på samt se andra meddelanden som finns i den kanalen. Tänk typ väldigt enkla Facebook grupper.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7"
+  }
+}
