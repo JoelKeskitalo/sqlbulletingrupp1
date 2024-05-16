@@ -11,11 +11,22 @@ function initDatabase() { // funktionen som skapar själva databasen
 
 
     // placeholders för våra tabeller, dvs, dessa skapar tabellerna för varje entitet
-    let sql_user = ``
+    let sql_user = `CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE,
+    )`
 
-    let sql_channel = ``
+    let sql_channel = `CREATE TABLE IF NOT EXISTS channels (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        owner_id INTEGER NOT NULL,
+        FOREIGN KEY (owner_id) REFERENCES users(id)
+    )`
 
-    let sql_message = ``
+    let sql_message = `CREATE TABLE IF NOT EXISTS messages (
+        
+    )`
 
     let sql_subscription = ``
 
