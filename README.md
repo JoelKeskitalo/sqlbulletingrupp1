@@ -2,6 +2,8 @@
 
 # Gruppexamination - SQL bulletin
 
+[Länk till ER-modul](https://drive.google.com/file/d/1S8knsKhz8_1tJu8t8I85uxx82wbZxrWg/view?usp=sharing)
+
 ## Instruktioner
 
 Ni ska i denna gruppexamination bygga ett API för en tjänst som fungerar som en anslagstavla. En användare kan posta ett meddelande till en kanal som denna "prenumererar" på samt se andra meddelanden som finns i den kanalen. Tänk typ väldigt enkla Facebook grupper.
