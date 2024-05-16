@@ -10,7 +10,7 @@ app.use(bodyParser.json()) // ser till att omvandla JSON-format så att vi kan u
 
 database.initDatabase() 
 
-// frågan är om funktionern (dvs createSubscription, createUser, etc) ska följa här nedan eller om vi ska separera dem i en egen js-fil
+// frågan är om funktionerna (dvs createSubscription, createUser, etc) ska följa här nedan eller om vi ska separera dem i en egen js-fil
 
 
 
