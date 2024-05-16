@@ -2,6 +2,8 @@
 
 # Gruppexamination - SQL bulletin
 
+[Länk till ER-modul](https://drive.google.com/file/d/1S8knsKhz8_1tJu8t8I85uxx82wbZxrWg/view?usp=sharing)
+
 ## Instruktioner
 
 Ni ska i denna gruppexamination bygga ett API för en tjänst som fungerar som en anslagstavla. En användare kan posta ett meddelande till en kanal som denna "prenumererar" på samt se andra meddelanden som finns i den kanalen. Tänk typ väldigt enkla Facebook grupper.
@@ -35,8 +37,6 @@ Läs igen noga ovan och därför modellera upp databasen med dess entiteter och 
 Tid för handledning på torsdagens lektion via discord
 
 ## Inlämning
-
-[Länk till ER-modul](https://drive.google.com/file/d/1S8knsKhz8_1tJu8t8I85uxx82wbZxrWg/view?usp=sharing)
 
 Inlämning sker på Awesomo med en länk till ert Github repo med er kod senast måndag 20/5 23:59.
 [dokumentation för att importera/exportera data till postman](https://learning.postman.com/docs/getting-started/importing-and-exporting/importing-and-exporting-overview/#importing-data-into-postman)
