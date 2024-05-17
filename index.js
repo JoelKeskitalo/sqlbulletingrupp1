@@ -4,7 +4,8 @@ const database = require('./database')
 const { 
     createUser, 
     createChannel,
-    createMessage 
+    createMessage,
+    getAllUsers 
 } = require('./functions');
 
 const app = express()
@@ -68,7 +69,12 @@ app.post('/subscriptions', async (req, res) => {
 
 // hämta alla användare
 app.get('/users', async (req, res) => {
-
+    try {
+        const allUsers = await getAllUsers()
+        res.status(200).send(allUsers)
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
 })
 
 // hämta alla kanaler

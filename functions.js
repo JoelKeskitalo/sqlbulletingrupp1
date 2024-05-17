@@ -57,6 +57,18 @@ const createMessage = async (content, user_id, channel_id) => {
 // createSubscription
 
 // getAllUsers
+const getAllUsers = async () => {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM users`
+        db.all(sql, [], (error, rows) => {
+            if (error) {
+                return reject(error)
+            } else {
+                resolve(rows)
+            }
+        } )
+    })
+}
 
 // getAllChannels
 
@@ -71,5 +83,6 @@ const createMessage = async (content, user_id, channel_id) => {
 module.exports = { 
     createUser,
     createChannel,
-    createMessage
+    createMessage,
+    getAllUsers
 };
