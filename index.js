@@ -1,7 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const database = require('./database')
-const { createUser } = require('./functions');
+const { 
+    createUser, 
+    createChannel 
+} = require('./functions');
 
 const app = express()
 const PORT = 5000;
@@ -28,7 +31,18 @@ app.post('/users', async (req, res) => {
 
 // skapa en ny kanal
 app.post('/channels', async (req, res) => {
+    const { name, owner_id } = req.body
 
+    if (!name || !owner_id) {
+        return res.status(400).send('Name and owner id are required')
+    }
+
+    try {
+        const channel = await createChannel(name, owner_id)
+        res.status(200).send(channel)
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
 })
 
 // skapa nya meddelanden

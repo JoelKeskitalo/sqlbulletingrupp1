@@ -22,8 +22,21 @@ const createUser = async (name, email) => {
 
 
 
-
 // createChannel
+const createChannel = async (name, owner_id) => {     // owner_id ger oss access, i och med att den är våran foreign key??
+    return new Promise((resolve, reject) => {
+        const sql = `INSERT INTO channels (name, owner_id) VALUES (?, ?)`;
+        db.run(sql, [name, owner_id], function (error) {
+            if (error) {
+                console.error(error)
+                reject(error)
+            } else {
+                const userId = this.lastID
+                resolve({userId, name, owner_id}) // måste vara inloggad för att kunna skapa en kanal, därmed blir det unika ägare
+            }
+        })
+    })
+}
 
 // createMessage
 
@@ -40,5 +53,6 @@ const createUser = async (name, email) => {
 
 
 module.exports = { 
-    createUser
+    createUser,
+    createChannel
 };
