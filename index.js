@@ -3,7 +3,8 @@ const bodyParser = require('body-parser')
 const database = require('./database')
 const { 
     createUser, 
-    createChannel 
+    createChannel,
+    createMessage 
 } = require('./functions');
 
 const app = express()
@@ -47,7 +48,17 @@ app.post('/channels', async (req, res) => {
 
 // skapa nya meddelanden
 app.post('/messages', async (req, res) => {
+    const { content, user_id, channel_id } = req.body
+    if (!content || !user_id || !channel_id) {
+        return res.status(400).send(`Please write a message and chose a channel`)
+    }
 
+    try {
+        const message = await createMessage(content,  user_id, channel_id)
+        res.status(200).send(message)
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
 })
 
 // skapa en prenumeration
@@ -72,6 +83,11 @@ app.get('/messages', async (req, res) => {
 
 // hämta alla subscriptions
 app.get('/subscriptions', async (req, res) => {
+
+})
+
+// ta bort användare
+app.delete('/users', async (req, res) => {
 
 })
 

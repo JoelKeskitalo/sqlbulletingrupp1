@@ -39,6 +39,20 @@ const createChannel = async (name, owner_id) => {     // owner_id ger oss access
 }
 
 // createMessage
+const createMessage = async (content, user_id, channel_id) => {
+    return new Promise((resolve, reject) => {
+        const sql = `INSERT INTO messages(content, user_id, channel_id) VALUES (?, ?, ?)`;
+        db.run(sql, [content, user_id, channel_id], function (error) {
+            if(error) {
+                console.error(error)
+                reject(error)
+            } else {
+                const userId = this.lastID
+                resolve({content, user_id, channel_id})
+            }
+        })
+    })
+}
 
 // createSubscription
 
@@ -48,11 +62,14 @@ const createChannel = async (name, owner_id) => {     // owner_id ger oss access
 
 // getAllMessages
 
+// getAllSubscriptions
+
 // deleteUser
 
 
 
 module.exports = { 
     createUser,
-    createChannel
+    createChannel,
+    createMessage
 };
