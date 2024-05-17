@@ -24,6 +24,49 @@ app.post('/users', async (req, res) => {
     }
 });
 
+// EXPRESS ROUTES:
+
+// skapa en ny kanal
+app.post('/channels', async (req, res) => {
+
+})
+
+// skapa nya meddelanden
+app.post('/messages', async (req, res) => {
+
+})
+
+// skapa en prenumeration
+app.post('/subscriptions', async (req, res) => {
+
+})
+
+// hämta alla användare
+app.get('/users', async (req, res) => {
+
+})
+
+// hämta alla kanaler
+app.get('/channels', async (req, res) => {
+
+})
+
+// hämta alla meddelanden
+app.get('/messages', async (req, res) => {
+
+})
+
+// hämta alla subscriptions
+app.get('/subscriptions', async (req, res) => {
+
+})
+
+
+
+
+
+
+
 
 app.listen(PORT, URL, () => {
     console.log(`Server running at http://${URL}:${PORT}`)

@@ -22,13 +22,23 @@ const createUser = async (name, email) => {
 
 
 
-module.exports = { 
-    createUser
-};
-// postUser
 
-// getUser
+// createChannel
+
+// createMessage
+
+// createSubscription
 
 // getAllUsers
 
+// getAllChannels
+
+// getAllMessages
+
 // deleteUser
+
+
+
+module.exports = { 
+    createUser
+};
