@@ -9,7 +9,8 @@ const {
     getAllUsers,
     getAllChannels,
     getAllMessages,
-    getAllSubscriptions
+    getAllSubscriptions,
+    deleteUser
 } = require('./functions');
 
 const app = express()
@@ -76,7 +77,7 @@ app.post('/subscription', async (req, res) => {
     } 
     try {
         const subscription = await createSubscription(user_id, channel_id)
-        res.status(200).send(message)
+        res.status(200).send(subscription)
     } catch (error) {
         res.status(500).send(error.message)
     }

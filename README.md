@@ -8,13 +8,13 @@
 
 Ni ska i denna gruppexamination bygga ett API för en tjänst som fungerar som en anslagstavla. En användare kan posta ett meddelande till en kanal som denna "prenumererar" på samt se andra meddelanden som finns i den kanalen. Tänk typ väldigt enkla Facebook grupper.
 
-* En användare kan "prenumerera" på ingen eller flera olika kanaler.
+* En användare kan "prenumerera" på ingen eller flera olika kanaler. -Check
 * En användare kan posta ett meddelande till enbart en kanal. Kan dock bara posta ett meddelande till en kanal som användaren "prenumererar" på.
-* En användare kan äga inga eller flera kanaler.
-* Ett meddelande kan tillhöra enbart en kanal (**Ej VG**)
-* Ett meddelande kan enbart komma från en användare.
-* En kanal kan ha inga eller flera meddelanden.
-* En kanal kan enbart ha en ägare.
+* En användare kan äga inga eller flera kanaler. -Check
+* Ett meddelande kan tillhöra enbart en kanal (**Ej VG**) -Check
+* Ett meddelande kan enbart komma från en användare. -Check
+* En kanal kan ha inga eller flera meddelanden. -Check
+* En kanal kan enbart ha en ägare. -Check
 
 
 Läs igen noga ovan och därför modellera upp databasen med dess entiteter och relationer i ett ER-diagram. Därefter bygg databasen och API:et.

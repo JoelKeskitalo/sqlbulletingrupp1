@@ -63,8 +63,8 @@ const createSubscription = async (user_id, channel_id) => {
                 console.error(error)
                 reject(error)
             } else {
-                const user_id = this.lastID
-                resolve({user_id, channel_id})
+                const subscription_id = this.lastID;  // Anta att det finns en primary key som är auto-increment
+                resolve({ subscription_id, user_id, channel_id });
             }
         })
     })
@@ -128,6 +128,18 @@ const getAllSubscriptions = async () => {
 }
 
 // deleteUser
+const deleteUser = async () => {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT name FROM users`
+        db.deleteUser(sql, [], (error, rows) => {
+            if (error) {
+                return reject(error)
+            } else {
+                resolve(rows)
+            }
+        })
+    })
+}
 
 
 
@@ -139,5 +151,6 @@ module.exports = {
     getAllUsers,
     getAllChannels,
     getAllMessages,
-    getAllSubscriptions
+    getAllSubscriptions,
+    deleteUser
 };
