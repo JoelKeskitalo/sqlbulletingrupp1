@@ -160,9 +160,6 @@ const getUserById = async (id) => { // ny
 
 
 
-=======
->>>>>>> 9c678501b937245cdd84d25839689a05f700201b
-
 module.exports = { 
     createUser,
     createChannel,

@@ -11,8 +11,8 @@ const {
     getAllMessages,
     getAllSubscriptions,
     getUserById
-    getAllSubscriptions,
-    deleteUser
+  
+   
 } = require('./functions');
 
 const app = express()
