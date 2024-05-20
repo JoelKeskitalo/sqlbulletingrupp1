@@ -9,7 +9,7 @@
 Ni ska i denna gruppexamination bygga ett API för en tjänst som fungerar som en anslagstavla. En användare kan posta ett meddelande till en kanal som denna "prenumererar" på samt se andra meddelanden som finns i den kanalen. Tänk typ väldigt enkla Facebook grupper.
 
 * En användare kan "prenumerera" på ingen eller flera olika kanaler. -Check
-* En användare kan posta ett meddelande till enbart en kanal. Kan dock bara posta ett meddelande till en kanal som användaren "prenumererar" på.
+* En användare kan posta ett meddelande till enbart en kanal. Kan dock bara posta ett meddelande till en kanal som användaren "prenumererar" på. -Check
 * En användare kan äga inga eller flera kanaler. -Check
 * Ett meddelande kan tillhöra enbart en kanal (**Ej VG**) -Check
 * Ett meddelande kan enbart komma från en användare. -Check
