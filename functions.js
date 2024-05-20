@@ -40,6 +40,11 @@ const createChannel = async (name, owner_id) => {     // owner_id ger oss access
 
 // createMessage
 const createMessage = async (content, user_id, channel_id) => {
+
+    const isSubscribed = await checkIfSubscribed(user_id, channel_id)
+    if (!isSubscribed) {
+        throw new Error(`The user is not subscribed to this channel.`)
+    }
     return new Promise((resolve, reject) => {
         const sql = `INSERT INTO messages(content, user_id, channel_id) VALUES (?, ?, ?)`;
         db.run(sql, [content, user_id, channel_id], function (error) {
@@ -63,13 +68,25 @@ const createSubscription = async (user_id, channel_id) => {
                 console.error(error)
                 reject(error)
             } else {
-                const user_id = this.lastID
-                resolve({user_id, channel_id})
+                const subscription_id = this.lastID;  
+                resolve({ subscription_id, user_id, channel_id });
             }
         })
     })
 }
 
+// Kollar om användaren är subscriber
+const checkIfSubscribed = async (user_id, channel_id) => {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT 1 FROM subscriptions WHERE user_id = ? AND channel_id = ?`;
+        db.get(sql, [user_id, channel_id], (error, row) => {
+            if(error) {
+                return reject(error)
+            } 
+            resolve(row ? true : false)
+        })
+    })
+}
 
 // getAllUsers
 const getAllUsers = async () => {
@@ -127,6 +144,7 @@ const getAllSubscriptions = async () => {
     })
 }
 
+
 // getUserById
 const getUserById = async (id) => { // ny 
     return new Promise((resolve, reject) => {
@@ -142,6 +160,8 @@ const getUserById = async (id) => { // ny
 
 
 
+=======
+>>>>>>> 9c678501b937245cdd84d25839689a05f700201b
 
 module.exports = { 
     createUser,
