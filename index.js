@@ -6,7 +6,8 @@ const {
     createChannel,
     createMessage,
     createSubscription,
-    getAllUsers 
+    getAllUsers,
+    getAllChannels
 } = require('./functions');
 
 const app = express()
@@ -70,8 +71,7 @@ app.post('/subscription', async (req, res) => {
     const { user_id, channel_id } = req.body
     if (!user_id || !channel_id) {
         return res.status(400).send(`Please write user-id and channel-id`)
-    }
-    
+    } 
     try {
         const subscription = await createSubscription(user_id, channel_id)
         res.status(200).send(message)
@@ -81,46 +81,29 @@ app.post('/subscription', async (req, res) => {
 })
 
 // hämta alla användare
-// app.get('/users', async (req, res) => {
-//     const { name } = req.body
-//     if (!user) {
-//         return res.status(400).send(error.message)
-//     }
-//     try {
-//         const allUsers = await getAllUsers()
-//         res.status(200).send(allUsers)
-//     } catch (error) {
-//         res.status(500).send(error.message)
-//     }
-// })
-
 app.get('/users', async (req, res) => {
-    console.log('GET /users called');  // Loggar när endpointen nås
     const { name } = req.query;  
-    console.log('Received name:', name);  // Kontrollerar vad som skickas i 'name'
-
     if (!name) {
-        console.log('No name provided, sending 400 error');
         return res.status(400).send('Name is required');
     }
-    
     try {
-        console.log('Calling getAllUsers()');
-        const allUsers = await getAllUsers();
-        console.log('All users:', allUsers);  // Loggar alla användare som hämtats
+        const allUsers = await getAllUsers(); 
         res.status(200).send(allUsers);
     } catch (error) {
-        console.log('Error in getAllUsers:', error.message);  // Loggar specifika fel från getAllUsers
         res.status(500).send(error.message);
     }
 });
 
-
-
-// hämta alla kanaler
+// Hämta alla kanaler
 app.get('/channels', async (req, res) => {
+    try {
+        const allChannels = await getAllChannels();
+        res.status(200).send(allChannels);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
 
-})
 
 // hämta alla meddelanden
 app.get('/messages', async (req, res) => {

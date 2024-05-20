@@ -86,6 +86,18 @@ const getAllUsers = async () => {
 }
 
 // getAllChannels
+const getAllChannels = async () => {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM channels`
+        db.all(sql, [], (error, rows) => {
+            if (error) {
+                return reject(error)
+            } else {
+                resolve(rows)
+            }
+        })
+    })
+}
 
 // getAllMessages
 
@@ -100,5 +112,6 @@ module.exports = {
     createChannel,
     createMessage,
     createSubscription,
-    getAllUsers
+    getAllUsers,
+    getAllChannels
 };
