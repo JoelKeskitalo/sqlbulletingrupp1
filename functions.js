@@ -127,7 +127,19 @@ const getAllSubscriptions = async () => {
     })
 }
 
-// deleteUser
+// getUserById
+const getUserById = async (id) => { // ny 
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM users WHERE id = ?`;
+        db.get(sql, [id], (error, row) => {
+            if (error) {
+                return reject(error);
+            }
+            resolve(row);
+        });
+    });
+};
+
 
 
 
@@ -139,5 +151,6 @@ module.exports = {
     getAllUsers,
     getAllChannels,
     getAllMessages,
-    getAllSubscriptions
+    getAllSubscriptions,
+    getUserById
 };

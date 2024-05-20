@@ -9,7 +9,8 @@ const {
     getAllUsers,
     getAllChannels,
     getAllMessages,
-    getAllSubscriptions
+    getAllSubscriptions,
+    getUserById
 } = require('./functions');
 
 const app = express()
@@ -46,6 +47,12 @@ app.post('/channels', async (req, res) => {
     }
 
     try {
+
+        const owner = await getUserById(owner_id) // ny
+        if (!owner) {
+            return res.status(400).send('Owner not found')
+        }
+
         const channel = await createChannel(name, owner_id)
         res.status(200).send(channel)
     } catch (error) {
