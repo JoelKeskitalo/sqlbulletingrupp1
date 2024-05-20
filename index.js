@@ -7,7 +7,8 @@ const {
     createMessage,
     createSubscription,
     getAllUsers,
-    getAllChannels
+    getAllChannels,
+    getAllMessages
 } = require('./functions');
 
 const app = express()
@@ -107,8 +108,13 @@ app.get('/channels', async (req, res) => {
 
 // hämta alla meddelanden
 app.get('/messages', async (req, res) => {
-
-})
+    try {
+        const allMessages = await getAllMessages();
+        res.status(200).send(allMessages);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
 
 // hämta alla subscriptions
 app.get('/subscriptions', async (req, res) => {
