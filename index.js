@@ -8,7 +8,8 @@ const {
     createSubscription,
     getAllUsers,
     getAllChannels,
-    getAllMessages
+    getAllMessages,
+    getAllSubscriptions
 } = require('./functions');
 
 const app = express()
@@ -118,7 +119,12 @@ app.get('/messages', async (req, res) => {
 
 // hämta alla subscriptions
 app.get('/subscriptions', async (req, res) => {
-
+    try {
+        const allSubscriptions = await getAllSubscriptions();
+        res.status(200).send(allSubscriptions)
+    } catch(error) {
+        res.status(500).send(error.message);
+    }
 })
 
 // ta bort användare
