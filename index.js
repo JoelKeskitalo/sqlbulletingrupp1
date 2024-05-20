@@ -5,6 +5,7 @@ const {
     createUser, 
     createChannel,
     createMessage,
+    createSubscription,
     getAllUsers 
 } = require('./functions');
 
@@ -16,6 +17,8 @@ app.use(bodyParser.json()) // ser till att omvandla JSON-format så att vi kan u
 
 // frågan är om funktionerna (dvs createSubscription, createUser, etc) ska följa här nedan eller om vi ska separera dem i en egen js-fil
 
+// EXPRESS ROUTES:
+// skapa ny användare
 app.post('/users', async (req, res) => {
     const { name, email } = req.body;
     if (!name || !email) {
@@ -29,7 +32,7 @@ app.post('/users', async (req, res) => {
     }
 });
 
-// EXPRESS ROUTES:
+
 
 // skapa en ny kanal
 app.post('/channels', async (req, res) => {
@@ -51,7 +54,7 @@ app.post('/channels', async (req, res) => {
 app.post('/messages', async (req, res) => {
     const { content, user_id, channel_id } = req.body
     if (!content || !user_id || !channel_id) {
-        return res.status(400).send(`Please write a message and chose a channel`)
+        return res.status(400).send(`Please write a message, choose a user-id and chose a channel-id`)
     }
 
     try {
@@ -63,8 +66,18 @@ app.post('/messages', async (req, res) => {
 })
 
 // skapa en prenumeration
-app.post('/subscriptions', async (req, res) => {
-
+app.post('/subscription', async (req, res) => {
+    const { user_id, channel_id } = req.body
+    if (!user_id || !channel_id) {
+        return res.status(400).send(`Please write user-id and channel-id`)
+    }
+    
+    try {
+        const subscription = await createSubscription(user_id, channel_id)
+        res.status(200).send(message)
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
 })
 
 // hämta alla användare

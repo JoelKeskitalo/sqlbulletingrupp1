@@ -55,6 +55,21 @@ const createMessage = async (content, user_id, channel_id) => {
 }
 
 // createSubscription
+const createSubscription = async (user_id, channel_id) => {
+    return new Promise((resolve, reject) => {
+        const sql = `INSERT INTO subscriptions(user_id, channel_id) VALUES (?, ?)`;
+        db.run(sql, [user_id, channel_id], function (error) {
+            if(error) {
+                console.error(error)
+                reject(error)
+            } else {
+                const user_id = this.lastID
+                resolve({user_id, channel_id})
+            }
+        })
+    })
+}
+
 
 // getAllUsers
 const getAllUsers = async () => {
@@ -84,5 +99,6 @@ module.exports = {
     createUser,
     createChannel,
     createMessage,
+    createSubscription,
     getAllUsers
 };
